@@ -1,0 +1,5 @@
+team_number,member_type,name,level,hp,power,defense,basic_ability,ult_ability
+1,Hero,SleepaKnight,1,100,15,10,Attack,None
+1,Hero,SleepaMage,1,80,20,5,Attack,None
+2,Enemy,Goblin,1,50,10,5,Attack,None
+2,Enemy,Orc,1,80,12,8,Attack,None

@@ -1,0 +1,32 @@
+P0
+- Location
+- Targeting priority: Closest
+- Targeting priority: Random
+- Ults
+
+
+P1
+- Effects (type and power)
+- Level and Tier calculations for player and enemy stats
+- Buffs and Debuffs
+- Passives
+- Targeting count: Column
+- Targeting count: Row
+- Targeting count: Splash
+
+
+P2
+- Equipment
+
+General
+- How do we want to handle speed more broadly? Simplify to fast/med/slow? Do we do anything different with heals?
+
+Completed Features
+- Elemental mults
+- Crits
+- Multiple targets
+- First round is player-only
+- Healing as targeting type
+- Ally targeting
+- EVERYONE targeting
+- Self and self+ally targeting
