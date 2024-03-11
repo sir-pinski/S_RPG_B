@@ -4,9 +4,7 @@ P0
 P1
 - Effects (type and power)
 - Level and Tier calculations for player and enemy stats
-- Buffs and Debuffs
 - Targeting count: Column
-- Targeting count: Splash
 - Repeat hits (allow hitting same target multiple times)
 
 
