@@ -2,36 +2,35 @@ from enum import Enum, auto
 
 
 class TargetType(Enum):
-    SELF = auto()
-    ALLY = auto()
-    ALLY_SELF = auto()
-    ENEMY = auto()
-    EVERYONE = auto()
+    SELF = auto()  # Can only target self
+    ALLY = auto()  # Can only target allies
+    ALLY_SELF = auto()  # Can target allies and self
+    ENEMY = auto()  # Can only target enemies
+    EVERYONE = auto()  # Can target everyone
 
 
 class TargetCount(Enum):
-    ONE = auto()
-    TWO = auto()
-    THREE = auto()
-    FOUR = auto()
-    ALL = auto()
-    ROW = auto()
-    COLUMN = auto()  # Placeholder for future implementation
-    SPLASH = auto()  # Placeholder for future implementation
+    ONE = auto()  # Can hit one character
+    TWO = auto()  # Can hit two characters
+    THREE = auto()  # Can hit three characters
+    FOUR = auto()  # Can hit four characters
+    ALL = auto()  # Can hit all characters in range
+    ROW = auto()  # Can hit all characters in a row
+    COLUMN = auto()  # Placeholder for future implementation, will hit all characters in a column
 
 
 # Targeting Ranges only apply for Enemy targeting types. In all other types it is assumed to be "Any"
 class TargetRange(Enum):
-    FRONT_ROW = auto()
-    BACK_ROW = auto()
-    ANY = auto()
+    FRONT_ROW = auto()  # Can target only the front row
+    BACK_ROW = auto()  # Can target only the back row
+    ANY = auto()  # Can target any row
 
 
 class TargetPriority(Enum):
-    RANDOM = auto()
-    CLOSEST = auto()
-    DAMAGED = auto()
-    NONE = auto()
+    RANDOM = auto()  # Will prioritize random targets
+    CLOSEST = auto()  # Will prioritize the closest targets
+    DAMAGED = auto()  # Will prioritize the most damaged targets
+    NONE = auto()  # Will not prioritize targets (for example, with SELF targeting type)
 
 
 class Element(Enum):
@@ -43,22 +42,12 @@ class Element(Enum):
     NIGHTMARE = auto()
 
 
-# class Location(Enum):
-#     FRONT_LEFT = auto()
-#     FRONT_CENTER = auto()
-#     FRONT_RIGHT = auto()
-#     MID_LEFT = auto()
-#     MID_RIGHT = auto()
-#     BACK_LEFT = auto()
-#     BACK_CENTER = auto()
-#     BACK_RIGHT = auto()
-
-
 class Row(Enum):
     FRONT = auto()
     MID = auto()
     BACK = auto()
 
+# Overloaded <= and >= operators for sorting. We define closer to the front as less, farther away as greater.
     def __le__(self, other):
         match self:
             case Row.FRONT:
@@ -89,6 +78,7 @@ class Column(Enum):
     CENTER = auto()
     RIGHT = auto()
 
+# Calculate the distance between two columns, used for Closest targeting priority
     def distance(self, other):
         if self == other:
             return 0
