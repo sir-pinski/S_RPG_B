@@ -1,7 +1,7 @@
 P0
 - Location
 - Targeting priority: Closest
-- Targeting priority: Random
+- Targeting range: Front, front-mid, Back, Any
 - Ults
 
 
@@ -9,7 +9,6 @@ P1
 - Effects (type and power)
 - Level and Tier calculations for player and enemy stats
 - Buffs and Debuffs
-- Passives
 - Targeting count: Column
 - Targeting count: Row
 - Targeting count: Splash
@@ -17,6 +16,7 @@ P1
 
 P2
 - Equipment
+- Passives
 
 General
 - How do we want to handle speed more broadly? Simplify to fast/med/slow? Do we do anything different with heals?
@@ -30,3 +30,4 @@ Completed Features
 - Ally targeting
 - EVERYONE targeting
 - Self and self+ally targeting
+- Targeting priority: Random

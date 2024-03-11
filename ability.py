@@ -37,10 +37,18 @@ class Ability:
                 case TargetCount.ALL:
                     if character.is_alive():
                         final_targets.append(character)
+                case TargetCount.COLUMN:
+                    pass  # Placeholder for future implementation
+                case TargetCount.ROW:
+                    pass
+                case TargetCount.SPLASH:
+                    pass
         return final_targets
 
     def identify_targets(self, caster, team1, team2):
         targets = []
+
+        # Identify allies and enemies
         if caster in team1.members:
             allies = team1.members.copy()
             enemies = team2.members.copy()
@@ -48,25 +56,27 @@ class Ability:
             allies = team2.members.copy()
             enemies = team1.members.copy()
 
-        if self.target_type == TargetType.ALLY:
-            for character in allies:
-                if character != caster:
+        match self.target_type:
+            case TargetType.ALLY:
+                for character in allies:
+                    if character != caster:
+                        targets.append(character)
+
+            case TargetType.ALLY_SELF:
+                for character in allies:
                     targets.append(character)
 
-        elif self.target_type == TargetType.ALLY_SELF:
-            for character in allies:
-                targets.append(character)
+            case TargetType.SELF:
+                targets.append(caster)
 
-        elif self.target_type == TargetType.SELF:
-            targets.append(caster)
+            case TargetType.EVERYONE:
+                for character in allies + enemies:
+                    targets.append(character)
 
-        elif self.target_type == TargetType.EVERYONE:
-            for character in allies + enemies:
-                targets.append(character)
-
-        elif self.target_type == TargetType.ENEMY:
-            for character in enemies:
-                targets.append(character)
+            # Targeting Ranges only apply for Enemy targeting types. In all other types it is assumed to be "Any"
+            case TargetType.ENEMY:
+                for character in enemies:
+                    targets.append(character)
 
         return targets
 

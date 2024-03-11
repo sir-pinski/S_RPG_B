@@ -1,7 +1,7 @@
 from basicAbility import BasicAbility
 
 class Character:
-    def __init__(self, name, element, level=1, hp=100, power=10, defense=10, basic_ability=None):
+    def __init__(self, name, element, row, column, level=1, hp=100, power=10, defense=10, basic_ability=None):
         self.basic_ability = basic_ability
         self.name = name
         self.element = element
@@ -11,6 +11,8 @@ class Character:
         self.power = power
         self.defense = defense
         self.stunned = False
+        self.row = row
+        self.column = column
 
     def is_alive(self):
         return self.hp > 0

@@ -20,6 +20,7 @@ class TargetCount(Enum):
     SPLASH = auto()
 
 
+# Targeting Ranges only apply for Enemy targeting types. In all other types it is assumed to be "Any"
 class TargetRange(Enum):
     FRONT_ROW = auto()
     FRONT_MID = auto()
@@ -33,6 +34,7 @@ class TargetPriority(Enum):
     DAMAGED = auto()
     NONE = auto()
 
+
 class Element(Enum):
     FIRE = auto()
     WATER = auto()
@@ -40,6 +42,30 @@ class Element(Enum):
     AIR = auto()
     DREAM = auto()
     NIGHTMARE = auto()
+
+
+# class Location(Enum):
+#     FRONT_LEFT = auto()
+#     FRONT_CENTER = auto()
+#     FRONT_RIGHT = auto()
+#     MID_LEFT = auto()
+#     MID_RIGHT = auto()
+#     BACK_LEFT = auto()
+#     BACK_CENTER = auto()
+#     BACK_RIGHT = auto()
+
+
+class Row(Enum):
+    FRONT = auto()
+    MID = auto()
+    BACK = auto()
+
+
+class Column(Enum):
+    LEFT = auto()
+    CENTER = auto()
+    RIGHT = auto()
+
 
 def element_multiplier(attacker, defender):
     # This function is a placeholder for the actual implementation
@@ -130,4 +156,3 @@ def element_multiplier(attacker, defender):
                     return 1.5
                 case Element.NIGHTMARE:
                     return 1
-

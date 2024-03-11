@@ -1,21 +1,24 @@
-from basicAbility import BasicAbility
-from ultAbility import UltAbility
-from hero import Hero
-from character import Character
-from boss import Boss
 import random
 import os
 import time
 
 
 def clear_screen():
-    print("\n"*5)
+    # # For Windows
+    # if os.name == 'nt':
+    #     _ = os.system('cls')
+    # # For macOS and Linux (name: 'posix')
+    # else:
+    #     _ = os.system('clear')
+    print("\n"*10)
 
 
 def Battle(team1, team2):
     round_number = 1
     all_characters = team1.members + team2.members
     while team1.is_team_alive() and team2.is_team_alive():
+        clear_screen()
+        print("\n" * 3)
         print(f"Round {round_number}")
         if round_number > 1:
             characters_to_act = [char for char in all_characters if char.is_alive() and not char.stunned]
@@ -44,8 +47,7 @@ def Battle(team1, team2):
         # Check for end of round conditions, reset characters for next round, etc.
         round_number += 1
 
-        clear_screen()
-
+        print("\n")
         for character in team1.members:
             print(character.display_status())
             character.stunned = False  # Example of resetting status
@@ -53,7 +55,7 @@ def Battle(team1, team2):
         for character in team2.members:
             print(character.display_status())
             character.stunned = False  # Example of resetting status
-        time.sleep(0.05)
+        time.sleep(0.1)
 
     # Determine and announce the winner
     if team1.is_team_alive():
