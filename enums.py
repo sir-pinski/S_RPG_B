@@ -16,14 +16,13 @@ class TargetCount(Enum):
     FOUR = auto()
     ALL = auto()
     ROW = auto()
-    COLUMN = auto()
-    SPLASH = auto()
+    COLUMN = auto()  # Placeholder for future implementation
+    SPLASH = auto()  # Placeholder for future implementation
 
 
 # Targeting Ranges only apply for Enemy targeting types. In all other types it is assumed to be "Any"
 class TargetRange(Enum):
     FRONT_ROW = auto()
-    FRONT_MID = auto()
     BACK_ROW = auto()
     ANY = auto()
 
@@ -60,11 +59,45 @@ class Row(Enum):
     MID = auto()
     BACK = auto()
 
+    def __le__(self, other):
+        match self:
+            case Row.FRONT:
+                return True
+            case Row.MID:
+                if other == Row.FRONT:
+                    return False
+                else:
+                    return True
+            case Row.BACK:
+                return False
+
+    def __ge__(self, other):
+        match self:
+            case Row.FRONT:
+                return False
+            case Row.MID:
+                if other == Row.BACK:
+                    return False
+                else:
+                    return True
+            case Row.BACK:
+                return True
+
 
 class Column(Enum):
     LEFT = auto()
     CENTER = auto()
     RIGHT = auto()
+
+    def distance(self, other):
+        if self == other:
+            return 0
+        elif self == Column.LEFT and other == Column.RIGHT:
+            return 2
+        elif self == Column.RIGHT and other == Column.LEFT:
+            return 2
+        else:
+            return 1
 
 
 def element_multiplier(attacker, defender):

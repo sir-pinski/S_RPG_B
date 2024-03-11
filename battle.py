@@ -10,7 +10,7 @@ def clear_screen():
     # # For macOS and Linux (name: 'posix')
     # else:
     #     _ = os.system('clear')
-    print("\n"*10)
+    print("\n"*3)
 
 
 def Battle(team1, team2):
@@ -20,6 +20,8 @@ def Battle(team1, team2):
         clear_screen()
         print("\n" * 3)
         print(f"Round {round_number}")
+        if round_number == 80:
+            print("The battle has gone on for too long. It's a draw!")
         if round_number > 1:
             characters_to_act = [char for char in all_characters if char.is_alive() and not char.stunned]
         else:  # First round, only team1 acts
@@ -32,7 +34,7 @@ def Battle(team1, team2):
             if character.is_alive() and not character.stunned:
                 # Determine the target(s) based on character's ability target_type, target_count, and range
                 # For this example, let's assume a simple target selection
-                targets = character.basic_ability.find_targets(character, team1, team2)
+                targets = character.basic_ability.select_targets(character, team1, team2)
                 for target in targets:
                     # target = random.choice(targets)  # Simple random target for example
                     damage = character.basic_ability.deal_damage(character, target)
@@ -55,7 +57,7 @@ def Battle(team1, team2):
         for character in team2.members:
             print(character.display_status())
             character.stunned = False  # Example of resetting status
-        time.sleep(0.1)
+        time.sleep(0.05)
 
     # Determine and announce the winner
     if team1.is_team_alive():

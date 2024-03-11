@@ -9,7 +9,7 @@ slash = BasicAbility(
     effect="none",
     effect_strength=0,
     target_type=TargetType.ENEMY,
-    target_count=TargetCount.TWO,
+    target_count=TargetCount.ROW,
     target_range=TargetRange.FRONT_ROW,
     target_priority=TargetPriority.CLOSEST,
     crit_rate=0.2,
@@ -18,12 +18,25 @@ slash = BasicAbility(
 
 poke = BasicAbility(
     name="Poke",
-    mult=0.5,
+    mult=0.75,
     effect="none",
     effect_strength=0,
     target_type=TargetType.ENEMY,
     target_count=TargetCount.ONE,
     target_range=TargetRange.FRONT_ROW,
+    target_priority=TargetPriority.CLOSEST,
+    crit_rate=0.15,
+    speed=15
+)
+
+sneaky_poke = BasicAbility(
+    name="Sneaky Poke",
+    mult=0.5,
+    effect="none",
+    effect_strength=0,
+    target_type=TargetType.ENEMY,
+    target_count=TargetCount.ONE,
+    target_range=TargetRange.BACK_ROW,
     target_priority=TargetPriority.CLOSEST,
     crit_rate=0.15,
     speed=15

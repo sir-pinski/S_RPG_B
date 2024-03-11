@@ -16,7 +16,7 @@ class Ability:
         self.target_priority = target_priority  # Placeholder for future implementation
         self.crit_rate = crit_rate
 
-    def find_targets(self, caster, team1, team2):
+    def select_targets(self, caster, team1, team2):
         possible_targets = self.identify_targets(caster, team1, team2)
         prioritized_targets = self.prioritize_targets(caster, possible_targets)
         final_targets = []
@@ -40,9 +40,12 @@ class Ability:
                 case TargetCount.COLUMN:
                     pass  # Placeholder for future implementation
                 case TargetCount.ROW:
-                    pass
+                    if character.is_alive() and len(final_targets) < 1:
+                        final_targets.append(character)
+                    elif character.is_alive() and len(final_targets) < 2 and character.row == final_targets[0].row:
+                        final_targets.append(character)
                 case TargetCount.SPLASH:
-                    pass
+                    pass  # Placeholder for future implementation
         return final_targets
 
     def identify_targets(self, caster, team1, team2):
@@ -50,34 +53,45 @@ class Ability:
 
         # Identify allies and enemies
         if caster in team1.members:
-            allies = team1.members.copy()
-            enemies = team2.members.copy()
+            allies = team1.copy()
+            enemies = team2.copy()
         else:
-            allies = team2.members.copy()
-            enemies = team1.members.copy()
+            allies = team2.copy()
+            enemies = team1.copy()
 
         match self.target_type:
             case TargetType.ALLY:
-                for character in allies:
-                    if character != caster:
-                        targets.append(character)
+                for character in allies.members:
+                    if character.is_alive():
+                        if character != caster:
+                            targets.append(character)
 
             case TargetType.ALLY_SELF:
-                for character in allies:
-                    targets.append(character)
+                for character in allies.members:
+                    if character.is_alive():
+                        targets.append(character)
 
             case TargetType.SELF:
                 targets.append(caster)
 
             case TargetType.EVERYONE:
-                for character in allies + enemies:
-                    targets.append(character)
+                for character in allies.members + enemies.members:
+                    if character.is_alive():
+                        targets.append(character)
 
             # Targeting Ranges only apply for Enemy targeting types. In all other types it is assumed to be "Any"
             case TargetType.ENEMY:
-                for character in enemies:
-                    targets.append(character)
-
+                for character in enemies.members:
+                    if character.is_alive():
+                        match self.target_range:
+                            case TargetRange.ANY:
+                                targets.append(character)
+                            case TargetRange.FRONT_ROW:
+                                if character.row == enemies.identify_front():
+                                    targets.append(character)
+                            case TargetRange.BACK_ROW:
+                                if character.row == enemies.identify_back():
+                                    targets.append(character)
         return targets
 
     def prioritize_targets(self, caster, targets):
@@ -89,7 +103,7 @@ class Ability:
                 random.shuffle(targets)
                 prioritized_targets = targets
             case TargetPriority.CLOSEST:
-                # Need to add logic to prioritize closest targets
+                targets.sort(key=lambda x: (x.row, Column.distance(caster.column, x.column)))
                 prioritized_targets = targets
             case TargetPriority.DAMAGED:
                 targets.sort(key=lambda x: (x.hp / x.max_hp, random.random()))

@@ -1,17 +1,13 @@
 P0
-- Location
-- Targeting priority: Closest
-- Targeting range: Front, front-mid, Back, Any
 - Ults
-
 
 P1
 - Effects (type and power)
 - Level and Tier calculations for player and enemy stats
 - Buffs and Debuffs
 - Targeting count: Column
-- Targeting count: Row
 - Targeting count: Splash
+- Repeat hits (allow hitting same target multiple times)
 
 
 P2
@@ -31,3 +27,7 @@ Completed Features
 - EVERYONE targeting
 - Self and self+ally targeting
 - Targeting priority: Random
+- Targeting range: Front, Back, Any
+- Location
+- Targeting priority: Closest
+- Targeting count: Row
