@@ -4,6 +4,7 @@ from enums import *
 
 
 class Ability:
+    debug = False
     def __init__(self, name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority,
                  crit_rate=0):
         self.name = name
@@ -110,17 +111,29 @@ class Ability:
                 prioritized_targets = targets
         return prioritized_targets
 
-    def deal_damage(self, caster, target):
+    def activate(self, caster, target):
         # Implement the logic for casting the ability
         # This is a placeholder for the actual implementation
+        if self.debug:
+            print(f"---{caster.name} uses {self.name} on {target.name}.---")
         damage = caster.power * self.mult  # initial raw damage
+        if self.debug:
+            print(f"Base damage: {damage}")
         damage = damage * (2 if random.random() < self.crit_rate else 1)  # determine if crit hit (we do this prior to defense)
+        if self.debug:
+            print(f"Damage after crit: {damage}")
         if self.mult < 0:  # if this is a heal, return here and ignore element and defense
             damage = math.ceil(damage)
+            if self.debug:
+                print(f"Healing: {damage}")
             target.take_damage(damage)
             return damage
         damage = damage * element_multiplier(caster, target)  # apply element multiplier
+        if self.debug:
+            print(f"Element multiplier: {element_multiplier(caster, target)}, Damage after element: {damage}")
         damage = damage * (damage / (damage + target.defense))  # apply defense
         damage = math.ceil(damage)  # take floor to avoid annoying float numbers, but guarantee at least 1 damage
+        if self.debug:
+            print(f"Defense: {target.defense}, Damage after defense: {damage}")
         target.take_damage(damage)
         return damage

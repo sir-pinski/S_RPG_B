@@ -15,7 +15,7 @@ class Game:
     def battle(self, hero, enemy):
         print(f"A wild {enemy.name} appears!")
         while hero.is_alive() and enemy.is_alive():
-            hero_damage = hero.deal_damage(enemy)
+            hero_damage = hero.activate(enemy)
             print(f"{hero.name} deals {hero_damage} damage to {enemy.name}.")
             if enemy.is_alive():
                 enemy_damage = enemy.attack - hero.defense

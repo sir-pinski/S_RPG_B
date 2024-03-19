@@ -2,11 +2,12 @@ P0
 - Ults
 
 P1
-- Effects (type and power)
+- Effects (like fire, poison - type and power)
+    - When should effects be applied?
 - Level and Tier calculations for player and enemy stats
 - Targeting count: Column
 - Repeat hits (allow hitting same target multiple times)
-
+- Multi-battle campaigns
 
 P2
 - Equipment
@@ -29,3 +30,5 @@ Completed Features
 - Location
 - Targeting priority: Closest
 - Targeting count: Row
+- Multi-wave battles
+- Remove surprise attack on first round?

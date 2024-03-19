@@ -1,8 +1,9 @@
 from basicAbility import BasicAbility
 
 class Character:
-    def __init__(self, name, element, row, column, level=1, hp=100, power=10, defense=10, basic_ability=None):
+    def __init__(self, name, element, row, column, level=1, hp=100, power=10, defense=10, basic_ability=None, ult_ability=None):
         self.basic_ability = basic_ability
+        self.ult_ability = ult_ability
         self.name = name
         self.element = element
         self.level = level
@@ -19,6 +20,7 @@ class Character:
 
     def take_damage(self, damage):
         self.hp -= damage
+
         if self.hp < 0:  # No negative HP
             self.hp = 0
         if self.hp > self.max_hp:  # Can't exceed max HP

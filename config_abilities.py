@@ -57,11 +57,11 @@ magic_missile = BasicAbility(
 
 healing_touch = BasicAbility(
     name="Healing Touch",
-    mult=-0.7,
+    mult=-0.5,
     effect="none",
     effect_strength=0,
     target_type=TargetType.ALLY_SELF,
-    target_count=TargetCount.TWO,
+    target_count=TargetCount.ONE,
     target_range=TargetRange.ANY,
     target_priority=TargetPriority.DAMAGED,
     crit_rate=0.2,
@@ -78,6 +78,6 @@ firestorm = UltAbility(
     target_count=TargetCount.ALL,
     target_range=TargetRange.ANY,
     target_priority=TargetPriority.NONE,
-    crit_rate=0,
-    charge=100  # This represents the charge needed to use the Ult
+    charge_required=100,  # This represents the charge needed to use the Ult
+    crit_rate=0
 )

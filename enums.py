@@ -65,10 +65,10 @@ class Row(Enum):
             case Row.FRONT:
                 return False
             case Row.MID:
-                if other == Row.BACK:
-                    return False
-                else:
+                if other == Row.FRONT:
                     return True
+                else:
+                    return False
             case Row.BACK:
                 return True
 
