@@ -17,6 +17,12 @@ class Ability:
         self.target_priority = target_priority  # Placeholder for future implementation
         self.crit_rate = crit_rate
 
+    def use(self, caster, team1, team2):
+        targets = self.select_targets(caster, team1, team2)
+        for target in targets:
+            damage = self.activate(caster, target)
+            print(f"{caster.name} uses {self.name} on {target.name} for {damage} damage.")
+
     def select_targets(self, caster, team1, team2):
         possible_targets = self.identify_targets(caster, team1, team2)
         prioritized_targets = self.prioritize_targets(caster, possible_targets)
