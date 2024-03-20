@@ -1,5 +1,5 @@
 P0
-- Ults
+[Complete]
 
 P1
 - Effects (like fire, poison - type and power)
@@ -31,4 +31,5 @@ Completed Features
 - Targeting priority: Closest
 - Targeting count: Row
 - Multi-wave battles
-- Remove surprise attack on first round?
+- Remove surprise attack on first round
+- Ults

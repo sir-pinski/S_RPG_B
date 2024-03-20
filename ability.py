@@ -5,6 +5,7 @@ from enums import *
 
 class Ability:
     debug = False
+
     def __init__(self, name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority,
                  crit_rate=0):
         self.name = name
@@ -18,9 +19,14 @@ class Ability:
         self.crit_rate = crit_rate
 
     def use(self, caster, team1, team2):
+        total_damage = 0
         targets = self.select_targets(caster, team1, team2)
         for target in targets:
             damage = self.activate(caster, target)
+            if damage < 0:
+                caster.total_healing_done -= damage
+            else:
+                caster.total_dmg_dealt += damage
             print(f"{caster.name} uses {self.name} on {target.name} for {damage} damage.")
 
     def select_targets(self, caster, team1, team2):
@@ -125,7 +131,8 @@ class Ability:
         damage = caster.power * self.mult  # initial raw damage
         if self.debug:
             print(f"Base damage: {damage}")
-        damage = damage * (2 if random.random() < self.crit_rate else 1)  # determine if crit hit (we do this prior to defense)
+        damage = damage * (
+            2 if random.random() < self.crit_rate else 1)  # determine if crit hit (we do this prior to defense)
         if self.debug:
             print(f"Damage after crit: {damage}")
         if self.mult < 0:  # if this is a heal, return here and ignore element and defense

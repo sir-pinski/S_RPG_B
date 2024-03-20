@@ -17,11 +17,20 @@ class Character:
         self.row = row
         self.column = column
 
+        self.total_dmg_dealt = 0
+        self.total_dmg_taken = 0
+        self.total_healing_done = 0
+        self.total_healing_received = 0
+
     def is_alive(self):
         return self.hp > 0
 
     def take_damage(self, damage):
         self.hp -= damage
+        if damage < 0:  # Healing
+            self.total_healing_received -= damage
+        else:
+            self.total_dmg_taken += damage
         if self.ult_ability is not None and damage > 0 and self.hp > 0:  # You don't get ult charge for being healed :P
             self.charge_ult(10+2*damage/self.max_hp)  # There's a minimum charge for being attacked, but big attacks will charge more
         if self.hp < 0:  # No negative HP
@@ -37,7 +46,8 @@ class Character:
                 self.trigger_ult()
             enqueue_ult(self)
         else:
-            print(f"{self.name} has no Ult!")
+            # print(f"{self.name} has no Ult!")
+            pass
 
     def use_basic_ability(self, team1, team2):
         if self.is_alive() and not self.stunned:

@@ -13,6 +13,7 @@ class UltAbility(Ability):
         if self.triggered:
             self.triggered = False
             self.charge_current = 0
+            print(f"U-U-U-U-U-ULTIMATE!!!")
             super().use(caster, team1, team2)
         else:
             print(f"{caster.name} tried to use {self.name} but it wasn't ready!")

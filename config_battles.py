@@ -1,4 +1,5 @@
 from config_characters import *
+from team import Team
 import copy
 # Teams could be formed as follows:
 team_heroes = Team(members=[sleepaknight, sleepamage, sleepapaladin, sleeparogue])
