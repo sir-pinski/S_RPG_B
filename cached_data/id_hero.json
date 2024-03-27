@@ -1,0 +1,50 @@
+{
+    "hero1": {
+        "id_hero": "hero1",
+        "Name": "DPS Dino",
+        "Species": "",
+        "Description": "",
+        "Class": "Fighter",
+        "Role": "Melee",
+        "Rarity": "Common",
+        "Power": "20",
+        "Defense": "10",
+        "HP": "100",
+        "Element": "Earth",
+        "Standard Ability": "Sucker Punch",
+        "Ult Ability": "Ult Sucker Punch",
+        "Passive Ability": ""
+    },
+    "hero2": {
+        "id_hero": "hero2",
+        "Name": "Ranger Raccoon",
+        "Species": "",
+        "Description": "",
+        "Class": "Archer",
+        "Role": "Ranged",
+        "Rarity": "Common",
+        "Power": "25",
+        "Defense": "6",
+        "HP": "70",
+        "Element": "Fire",
+        "Standard Ability": "Fire Arrow",
+        "Ult Ability": "Ult Fire Arrow",
+        "Passive Ability": ""
+    },
+    "hero3": {
+        "id_hero": "hero3",
+        "Name": "Armor Armadillo",
+        "Species": "",
+        "Description": "",
+        "Class": "Shieldbearer",
+        "Role": "Defender",
+        "Rarity": "Common",
+        "Power": "15",
+        "Defense": "15",
+        "HP": "150",
+        "Element": "Water",
+        "Standard Ability": "Shield Bash",
+        "Ult Ability": "Ult Shield Bash",
+        "Passive Ability": ""
+    }
+}
