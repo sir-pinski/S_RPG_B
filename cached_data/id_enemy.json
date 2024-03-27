@@ -1,0 +1,41 @@
+{
+    "enemy1": {
+        "id_enemy": "enemy1",
+        "Name": "Ghost",
+        "Species": "",
+        "Description": "",
+        "Role": "Supporter",
+        "Power": "10",
+        "Defense": "5",
+        "HP": "50",
+        "Element": "Fire",
+        "Standard Ability": "Poison Dart",
+        "Ult Ability": ""
+    },
+    "enemy2": {
+        "id_enemy": "enemy2",
+        "Name": "Fear Cloud",
+        "Species": "",
+        "Description": "",
+        "Role": "Melee",
+        "Power": "12",
+        "Defense": "10",
+        "HP": "40",
+        "Element": "Earth",
+        "Standard Ability": "Chain Lightning",
+        "Ult Ability": ""
+    },
+    "enemy3": {
+        "id_enemy": "enemy3",
+        "Name": "Shadow",
+        "Species": "",
+        "Description": "",
+        "Role": "Ranged",
+        "Power": "15",
+        "Defense": "8",
+        "HP": "75",
+        "Element": "Water",
+        "Standard Ability": "Sneak Attack",
+        "Ult Ability": ""
+    }
+}

@@ -3,19 +3,19 @@ from battle import enqueue_ult
 import copy
 
 class Character:
-    def __init__(self, name, element, row, column, level=1, hp=100, power=10, defense=10, basic_ability=None, ult_ability=None):
-        self.basic_ability = copy.deepcopy(basic_ability)
-        self.ult_ability = copy.deepcopy(ult_ability)
-        self.name = name
-        self.element = element
-        self.level = level
-        self.max_hp = hp
-        self.hp = hp
-        self.power = power
-        self.defense = defense
+    def __init__(self, config):
+        self.basic_ability = copy.deepcopy(config['basic_ability'])
+        self.ult_ability = copy.deepcopy(config['ult_ability'])
+        self.name = config['name']
+        self.element = config['element']
+        self.level = config['level']
+        self.max_hp = config['hp']
+        self.hp = config['hp']
+        self.power = config['power']
+        self.defense = config['defense']
         self.stunned = False
-        self.row = row
-        self.column = column
+        self.row = config['row']
+        self.column = config['column']
 
         self.total_dmg_dealt = 0
         self.total_dmg_taken = 0

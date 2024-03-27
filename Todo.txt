@@ -2,15 +2,16 @@ P0
 [Complete]
 
 P1
+- Spreadsheet config input
 - Effects (like fire, poison - type and power)
     - When should effects be applied?
+- Equipment
 - Level and Tier calculations for player and enemy stats
+
+P2
 - Targeting count: Column
 - Repeat hits (allow hitting same target multiple times)
 - Multi-battle campaigns
-
-P2
-- Equipment
 - Passives
 
 General
