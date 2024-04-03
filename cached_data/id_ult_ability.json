@@ -1,6 +1,6 @@
 {
     "ult_ability_1": {
-        "id_ult_ability": "ult_ability_1",
+        "id": "ult_ability_1",
         "name": "Ult Sucker Punch",
         "mult": "1.5",
         "effect": "None",
@@ -10,15 +10,10 @@
         "target_range": "Front Row",
         "target_priority": "Closest",
         "charge": "100",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "Self",
-        "Target Counts": "1",
-        "Ranges": "Front Row",
-        "Priorities": "Closest"
+        "crit_rate": "5%"
     },
     "ult_ability_2": {
-        "id_ult_ability": "ult_ability_2",
+        "id": "ult_ability_2",
         "name": "Ult Fire Arrow",
         "mult": "0.75",
         "effect": "Fire",
@@ -28,15 +23,10 @@
         "target_range": "Any",
         "target_priority": "Random",
         "charge": "120",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "Ally",
-        "Target Counts": "2",
-        "Ranges": "Back Row",
-        "Priorities": "Damaged"
+        "crit_rate": "5%"
     },
     "ult_ability_3": {
-        "id_ult_ability": "ult_ability_3",
+        "id": "ult_ability_3",
         "name": "Ult Chain Lightning",
         "mult": "0.3",
         "effect": "None",
@@ -46,15 +36,10 @@
         "target_range": "Any",
         "target_priority": "Random",
         "charge": "100",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "Self + Ally",
-        "Target Counts": "3",
-        "Ranges": "Any",
-        "Priorities": "Random"
+        "crit_rate": "5%"
     },
     "ult_ability_4": {
-        "id_ult_ability": "ult_ability_4",
+        "id": "ult_ability_4",
         "name": "Ult Mass Heal",
         "mult": "-1",
         "effect": "None",
@@ -64,15 +49,10 @@
         "target_range": "Any",
         "target_priority": "Damaged",
         "charge": "120",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "Enemy",
-        "Target Counts": "4",
-        "Ranges": "",
-        "Priorities": "None"
+        "crit_rate": "5%"
     },
     "ult_ability_5": {
-        "id_ult_ability": "ult_ability_5",
+        "id": "ult_ability_5",
         "name": "Ult Poison Dart",
         "mult": "0",
         "effect": "Poison",
@@ -82,15 +62,10 @@
         "target_range": "Any",
         "target_priority": "Random",
         "charge": "100",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "Everyone",
-        "Target Counts": "All",
-        "Ranges": "",
-        "Priorities": ""
+        "crit_rate": "5%"
     },
     "ult_ability_6": {
-        "id_ult_ability": "ult_ability_6",
+        "id": "ult_ability_6",
         "name": "Ult Sneak Attack",
         "mult": "1",
         "effect": "None",
@@ -100,15 +75,10 @@
         "target_range": "Back Row",
         "target_priority": "Damaged",
         "charge": "120",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "",
-        "Target Counts": "Row",
-        "Ranges": "",
-        "Priorities": ""
+        "crit_rate": "5%"
     },
     "ult_ability_7": {
-        "id_ult_ability": "ult_ability_7",
+        "id": "ult_ability_7",
         "name": "Ult Spear Strike",
         "mult": "0.75",
         "effect": "Bleed",
@@ -118,15 +88,10 @@
         "target_range": "Any",
         "target_priority": "Closest",
         "charge": "100",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "",
-        "Target Counts": "Column",
-        "Ranges": "",
-        "Priorities": ""
+        "crit_rate": "5%"
     },
     "ult_ability_8": {
-        "id_ult_ability": "ult_ability_8",
+        "id": "ult_ability_8",
         "name": "Ult Shield Bash",
         "mult": "0.5",
         "effect": "None",
@@ -136,11 +101,6 @@
         "target_range": "Front Row",
         "target_priority": "Closest",
         "charge": "120",
-        "crit_rate": "5%",
-        "": "",
-        "Target Types": "",
-        "Target Counts": "",
-        "Ranges": "",
-        "Priorities": ""
+        "crit_rate": "5%"
     }
 }

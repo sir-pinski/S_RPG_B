@@ -6,17 +6,29 @@ from enums import *
 class Ability:
     debug = False
 
-    def __init__(self, name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority,
-                 crit_rate=0):
-        self.name = name
-        self.mult = mult  # Multiplier for the ability. Negative for heals.
-        self.effect = effect
-        self.effect_strength = effect_strength
-        self.target_type = target_type
-        self.target_count = target_count
-        self.target_range = target_range
-        self.target_priority = target_priority  # Placeholder for future implementation
-        self.crit_rate = crit_rate
+    # def __init__(self, name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority,
+    #              crit_rate=0):
+    #     self.name = name
+    #     self.mult = mult  # Multiplier for the ability. Negative for heals.
+    #     self.effect = effect
+    #     self.effect_strength = effect_strength
+    #     self.target_type = target_type
+    #     self.target_count = target_count
+    #     self.target_range = target_range
+    #     self.target_priority = target_priority  # Placeholder for future implementation
+    #     self.crit_rate = crit_rate
+
+    def __init__(self, data):
+        self.id = data['id']
+        self.name = data['name']
+        self.mult = data['mult']  # Multiplier for the ability. Negative for heals.
+        self.effect = data['effect']
+        self.effect_strength = data['effect_strength']
+        self.target_type = data['target_type']
+        self.target_count = data['target_count']
+        self.target_range = data['target_range']
+        self.target_priority = data['target_priority']  # Placeholder for future implementation
+        self.crit_rate = data['crit_rate']
 
     def use(self, caster, team1, team2):
         total_damage = 0

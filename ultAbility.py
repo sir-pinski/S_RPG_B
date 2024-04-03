@@ -2,10 +2,16 @@ from ability import Ability
 
 
 class UltAbility(Ability):
-    def __init__(self, name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority,
-                 charge_required, crit_rate=0):
-        super().__init__(name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority, crit_rate)
-        self.charge_required = charge_required  # The amount of charge needed to use the Ult
+    # def __init__(self, name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority,
+    #              charge_required, crit_rate=0):
+    #     super().__init__(name, mult, effect, effect_strength, target_type, target_count, target_range, target_priority, crit_rate)
+    #     self.charge_required = charge_required  # The amount of charge needed to use the Ult
+    #     self.charge_current = 0  # Current charge amount
+    #     self.triggered = False
+
+    def __init__(self, data):
+        super().__init__(data)
+        self.charge_required = float(data["charge"])  # The amount of charge needed to use the Ult
         self.charge_current = 0  # Current charge amount
         self.triggered = False
 

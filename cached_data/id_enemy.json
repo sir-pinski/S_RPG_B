@@ -1,41 +1,35 @@
 {
     "enemy1": {
-        "id_enemy": "enemy1",
-        "Name": "Ghost",
-        "Species": "",
-        "Description": "",
-        "Role": "Supporter",
-        "Power": "10",
-        "Defense": "5",
-        "HP": "50",
-        "Element": "Fire",
-        "Standard Ability": "Poison Dart",
-        "Ult Ability": ""
+        "id": "enemy1",
+        "name": "Ghost",
+        "role": "Supporter",
+        "hp": "50",
+        "power": "10",
+        "defense": "5",
+        "element": "Fire",
+        "standard_ability": "std_ability_5",
+        "ult_ability": ""
     },
     "enemy2": {
-        "id_enemy": "enemy2",
-        "Name": "Fear Cloud",
-        "Species": "",
-        "Description": "",
-        "Role": "Melee",
-        "Power": "12",
-        "Defense": "10",
-        "HP": "40",
-        "Element": "Earth",
-        "Standard Ability": "Chain Lightning",
-        "Ult Ability": ""
+        "id": "enemy2",
+        "name": "Fear Cloud",
+        "role": "Melee",
+        "hp": "40",
+        "power": "12",
+        "defense": "10",
+        "element": "Earth",
+        "standard_ability": "std_ability_3",
+        "ult_ability": ""
     },
     "enemy3": {
-        "id_enemy": "enemy3",
-        "Name": "Shadow",
-        "Species": "",
-        "Description": "",
-        "Role": "Ranged",
-        "Power": "15",
-        "Defense": "8",
-        "HP": "75",
-        "Element": "Water",
-        "Standard Ability": "Sneak Attack",
-        "Ult Ability": ""
+        "id": "enemy3",
+        "name": "Shadow",
+        "role": "Ranged",
+        "hp": "75",
+        "power": "15",
+        "defense": "8",
+        "element": "Water",
+        "standard_ability": "std_ability_6",
+        "ult_ability": ""
     }
 }

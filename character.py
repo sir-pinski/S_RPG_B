@@ -1,21 +1,26 @@
 from basicAbility import BasicAbility
-from battle import enqueue_ult
+from ultAbility import UltAbility
+# from battle import enqueue_ult
 import copy
 
 class Character:
-    def __init__(self, config):
-        self.basic_ability = copy.deepcopy(config['basic_ability'])
-        self.ult_ability = copy.deepcopy(config['ult_ability'])
-        self.name = config['name']
-        self.element = config['element']
-        self.level = config['level']
-        self.max_hp = config['hp']
-        self.hp = config['hp']
-        self.power = config['power']
-        self.defense = config['defense']
+    def __init__(self, basic_abilities, ult_abilities, char_type, level, tier, row, column):
+        self.basic_ability = BasicAbility(basic_abilities.data[char_type['standard_ability']])
+        if char_type['ult_ability'] != '':
+            self.ult_ability = UltAbility(ult_abilities.data[char_type['ult_ability']])
+        else:
+            self.ult_ability = None
+        self.name = char_type['name']
+        self.element = char_type['element']
+        self.level = level
+        self.tier = tier
+        self.max_hp = float(char_type['hp'])
+        self.hp = float(char_type['hp'])
+        self.power = float(char_type['power'])
+        self.defense = float(char_type['defense'])
         self.stunned = False
-        self.row = config['row']
-        self.column = config['column']
+        self.row = row
+        self.column = column
 
         self.total_dmg_dealt = 0
         self.total_dmg_taken = 0
@@ -44,7 +49,7 @@ class Character:
             if self.ult_ability.is_charged():
                 print(f"{self.name}'s Ult is charged!")
                 self.trigger_ult()
-            enqueue_ult(self)
+            # enqueue_ult(self)
         else:
             # print(f"{self.name} has no Ult!")
             pass
@@ -63,7 +68,10 @@ class Character:
         return False
 
     def is_ult_ready(self):
-        return self.ult_ability.is_triggered() and self.ult_ability.is_charged()
+        if self.ult_ability is not None:
+            return self.ult_ability.is_triggered() and self.ult_ability.is_charged()
+        else:
+            return False
 
     def is_ult_charged(self):
         return self.ult_ability.is_charged()
