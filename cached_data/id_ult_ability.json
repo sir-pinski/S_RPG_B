@@ -5,12 +5,12 @@
         "mult": "1.5",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Front Row",
-        "target_priority": "Closest",
+        "target_type": "ENEMY",
+        "target_count": "ONE",
+        "target_range": "FRONT_ROW",
+        "target_priority": "CLOSEST",
         "charge": "100",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "ult_ability_2": {
         "id": "ult_ability_2",
@@ -18,12 +18,12 @@
         "mult": "0.75",
         "effect": "Fire",
         "effect_strength": "2",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Any",
-        "target_priority": "Random",
+        "target_type": "ENEMY",
+        "target_count": "ONE",
+        "target_range": "ANY",
+        "target_priority": "RANDOM",
         "charge": "120",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "ult_ability_3": {
         "id": "ult_ability_3",
@@ -31,12 +31,12 @@
         "mult": "0.3",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "3",
-        "target_range": "Any",
-        "target_priority": "Random",
+        "target_type": "ENEMY",
+        "target_count": "THREE",
+        "target_range": "ANY",
+        "target_priority": "RANDOM",
         "charge": "100",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "ult_ability_4": {
         "id": "ult_ability_4",
@@ -44,12 +44,12 @@
         "mult": "-1",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Self + Ally",
-        "target_count": "All",
-        "target_range": "Any",
-        "target_priority": "Damaged",
+        "target_type": "ALLY_SELF",
+        "target_count": "ALL",
+        "target_range": "ANY",
+        "target_priority": "DAMAGED",
         "charge": "120",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "ult_ability_5": {
         "id": "ult_ability_5",
@@ -57,12 +57,12 @@
         "mult": "0",
         "effect": "Poison",
         "effect_strength": "3",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Any",
-        "target_priority": "Random",
+        "target_type": "ENEMY",
+        "target_count": "ONE",
+        "target_range": "ANY",
+        "target_priority": "RANDOM",
         "charge": "100",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "ult_ability_6": {
         "id": "ult_ability_6",
@@ -70,12 +70,12 @@
         "mult": "1",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Back Row",
-        "target_priority": "Damaged",
+        "target_type": "ENEMY",
+        "target_count": "ONE",
+        "target_range": "BACK_ROW",
+        "target_priority": "DAMAGED",
         "charge": "120",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "ult_ability_7": {
         "id": "ult_ability_7",
@@ -83,12 +83,12 @@
         "mult": "0.75",
         "effect": "Bleed",
         "effect_strength": "1",
-        "target_type": "Enemy",
-        "target_count": "Column",
-        "target_range": "Any",
-        "target_priority": "Closest",
+        "target_type": "ENEMY",
+        "target_count": "COLUMN",
+        "target_range": "ANY",
+        "target_priority": "CLOSEST",
         "charge": "100",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "ult_ability_8": {
         "id": "ult_ability_8",
@@ -96,11 +96,11 @@
         "mult": "0.5",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "Row",
-        "target_range": "Front Row",
-        "target_priority": "Closest",
+        "target_type": "ENEMY",
+        "target_count": "ROW",
+        "target_range": "FRONT_ROW",
+        "target_priority": "CLOSEST",
         "charge": "120",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     }
 }

@@ -1,17 +1,43 @@
-import copy
+from enums import Row, Column
 
 from character import Character
-
 
 class Wave_Enemy:
     def __init__(self, data):
         # Assuming data is a dictionary with keys like 'type', 'level', 'tier', and 'position'
         self.type = data.get('type')
         self.level = data.get('level', 1)  # Default level to 1 if not specified
-        self.tier = data.get('tier', 1)  # Default tier to 1 if not specified
-        self.row = data.get('row')  # Default position if not specified
-        self.column = data.get('column')  # Default position if not specified
-        # Add more initialization as needed based on your game's design
+        self.tier = data.get('tier', 1)    # Default tier to 1 if not specified
+        match data.get('position'):
+            case 0:
+                self.row = -1
+                self.column = -1
+            case 1:
+                self.row = Row.FRONT
+                self.column = Column.LEFT
+            case 2:
+                self.row = Row.FRONT
+                self.column = Column.CENTER
+            case 3:
+                self.row = Row.FRONT
+                self.column = Column.RIGHT
+            case 4:
+                self.row = Row.MID
+                self.column = Column.LEFT
+            case 5:
+                self.row = Row.MID
+                self.column = Column.RIGHT
+            case 6:
+                self.row = Row.BACK
+                self.column = Column.LEFT
+            case 7:
+                self.row = Row.BACK
+                self.column = Column.CENTER
+            case 8:
+                self.row = Row.BACK
+                self.column = Column.RIGHT
+
+
 
 
 class Wave:
@@ -24,7 +50,6 @@ class Stage:
     def __init__(self, waves, stage_number=0):
         self.waves = waves
         self.stage_number = stage_number
-
 
 class Act:
     def __init__(self, stages, act_number=0):
@@ -67,8 +92,7 @@ def create_campaign(campaign_data, enemy_types):
                 'type': entry[f'enemy_{i}_type'],
                 'level': int(entry.get(f'enemy_{i}_lvl', '0')),
                 'tier': int(entry.get(f'enemy_{i}_tier', '0')),
-                'row': int(entry.get(f'enemy_{i}_row', '0')),
-                'column': int(entry.get(f'enemy_{i}_column', '0'))
+                'position': int(entry.get(f'enemy_{i}_pos', '0'))
             }, enemy_types)
             for i in range(1, 6) if entry.get(f'enemy_{i}_type')
         ]

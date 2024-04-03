@@ -2,41 +2,41 @@
     "std_ability_1": {
         "id": "std_ability_1",
         "name": "Sucker Punch",
-        "mult": "1.5",
+        "mult": "1.25",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Front Row",
-        "target_priority": "Closest",
+        "target_type": "ENEMY",
+        "target_count": "ONE",
+        "target_range": "FRONT_ROW",
+        "target_priority": "CLOSEST",
         "speed": "3",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "std_ability_2": {
         "id": "std_ability_2",
-        "name": "Fire Arrow",
-        "mult": "0.75",
-        "effect": "Fire",
-        "effect_strength": "2",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Any",
-        "target_priority": "Random",
+        "name": "Split Arrow",
+        "mult": "0.8",
+        "effect": "None",
+        "effect_strength": "0",
+        "target_type": "ENEMY",
+        "target_count": "TWO",
+        "target_range": "ANY",
+        "target_priority": "RANDOM",
         "speed": "4",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "std_ability_3": {
         "id": "std_ability_3",
         "name": "Chain Lightning",
-        "mult": "0.3",
+        "mult": "0.6",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "3",
-        "target_range": "Any",
-        "target_priority": "Random",
+        "target_type": "ENEMY",
+        "target_count": "THREE",
+        "target_range": "ANY",
+        "target_priority": "RANDOM",
         "speed": "6",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "std_ability_4": {
         "id": "std_ability_4",
@@ -44,12 +44,12 @@
         "mult": "-1",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Self + Ally",
-        "target_count": "All",
-        "target_range": "Any",
-        "target_priority": "Damaged",
+        "target_type": "ALLY_SELF",
+        "target_count": "ALL",
+        "target_range": "ANY",
+        "target_priority": "DAMAGED",
         "speed": "12",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "std_ability_5": {
         "id": "std_ability_5",
@@ -57,12 +57,12 @@
         "mult": "0",
         "effect": "Poison",
         "effect_strength": "3",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Any",
-        "target_priority": "Random",
+        "target_type": "ENEMY",
+        "target_count": "ONE",
+        "target_range": "ANY",
+        "target_priority": "RANDOM",
         "speed": "8",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "std_ability_6": {
         "id": "std_ability_6",
@@ -70,12 +70,12 @@
         "mult": "1",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "1",
-        "target_range": "Back Row",
-        "target_priority": "Damaged",
+        "target_type": "ENEMY",
+        "target_count": "ONE",
+        "target_range": "BACK_ROW",
+        "target_priority": "DAMAGED",
         "speed": "10",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "std_ability_7": {
         "id": "std_ability_7",
@@ -83,12 +83,12 @@
         "mult": "0.75",
         "effect": "Bleed",
         "effect_strength": "1",
-        "target_type": "Enemy",
-        "target_count": "Column",
-        "target_range": "Any",
-        "target_priority": "Closest",
+        "target_type": "ENEMY",
+        "target_count": "COLUMN",
+        "target_range": "ANY",
+        "target_priority": "CLOSEST",
         "speed": "5",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     },
     "std_ability_8": {
         "id": "std_ability_8",
@@ -96,11 +96,11 @@
         "mult": "0.5",
         "effect": "None",
         "effect_strength": "0",
-        "target_type": "Enemy",
-        "target_count": "Row",
-        "target_range": "Front Row",
-        "target_priority": "Closest",
+        "target_type": "ENEMY",
+        "target_count": "ROW",
+        "target_range": "FRONT_ROW",
+        "target_priority": "CLOSEST",
         "speed": "8",
-        "crit_rate": "5%"
+        "crit_rate": "0.05"
     }
 }

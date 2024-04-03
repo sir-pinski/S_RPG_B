@@ -1,4 +1,5 @@
 from basicAbility import BasicAbility
+from enums import Element
 from ultAbility import UltAbility
 # from battle import enqueue_ult
 import copy
@@ -11,7 +12,7 @@ class Character:
         else:
             self.ult_ability = None
         self.name = char_type['name']
-        self.element = char_type['element']
+        self.element = Element[char_type['element']]
         self.level = level
         self.tier = tier
         self.max_hp = float(char_type['hp'])

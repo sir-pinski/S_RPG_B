@@ -21,14 +21,15 @@ class Ability:
     def __init__(self, data):
         self.id = data['id']
         self.name = data['name']
-        self.mult = data['mult']  # Multiplier for the ability. Negative for heals.
+        self.mult = float(data['mult'])  # Multiplier for the ability. Negative for heals.
         self.effect = data['effect']
-        self.effect_strength = data['effect_strength']
-        self.target_type = data['target_type']
-        self.target_count = data['target_count']
-        self.target_range = data['target_range']
-        self.target_priority = data['target_priority']  # Placeholder for future implementation
-        self.crit_rate = data['crit_rate']
+        self.effect_strength = float(data['effect_strength'])
+        # Convert string values to enum members
+        self.target_type = TargetType[data['target_type']]
+        self.target_count = TargetCount[data['target_count']]
+        self.target_range = TargetRange[data['target_range']]
+        self.target_priority = TargetPriority[data['target_priority']]  # Placeholder for future implementation
+        self.crit_rate = float(data['crit_rate'])
 
     def use(self, caster, team1, team2):
         total_damage = 0

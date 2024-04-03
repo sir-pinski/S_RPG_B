@@ -78,7 +78,7 @@ class Column(Enum):
     CENTER = auto()
     RIGHT = auto()
 
-# Calculate the distance between two columns, used for Closest targeting priority
+    # Calculate the distance between two columns, used for Closest targeting priority
     def distance(self, other):
         if self == other:
             return 0
