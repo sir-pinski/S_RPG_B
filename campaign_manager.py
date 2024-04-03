@@ -1,13 +1,14 @@
 from enums import Row, Column
-
+from config_manager import GameConfiguration
 from character import Character
+
 
 class Wave_Enemy:
     def __init__(self, data):
         # Assuming data is a dictionary with keys like 'type', 'level', 'tier', and 'position'
         self.type = data.get('type')
         self.level = data.get('level', 1)  # Default level to 1 if not specified
-        self.tier = data.get('tier', 1)    # Default tier to 1 if not specified
+        self.tier = data.get('tier', 1)  # Default tier to 1 if not specified
         match data.get('position'):
             case 0:
                 self.row = -1
@@ -38,8 +39,6 @@ class Wave_Enemy:
                 self.column = Column.RIGHT
 
 
-
-
 class Wave:
     def __init__(self, enemies, wave_number=0):
         self.enemies = enemies
@@ -50,6 +49,7 @@ class Stage:
     def __init__(self, waves, stage_number=0):
         self.waves = waves
         self.stage_number = stage_number
+
 
 class Act:
     def __init__(self, stages, act_number=0):
@@ -62,7 +62,7 @@ class Campaign:
         self.acts = acts
 
 
-def create_enemy(enemy_data, enemy_types):
+def create_enemy(enemy_data):
     type_id = enemy_data['type']
     # if type_id in enemy_types.data:
     #     enemy = enemy_types.data[type_id]
@@ -75,8 +75,11 @@ def create_enemy(enemy_data, enemy_types):
     #     return None
 
 
-def create_campaign(campaign_data, enemy_types):
+def create_campaign(campaign_config: GameConfiguration):
     acts_dict = {}  # Keyed by act number, contains Act objects
+    campaign_data = campaign_config.get_campaign().data
+    enemy_types = campaign_config.get_enemies()
+    multipliers = campaign_config.get_multipliers()
 
     for entry_id, entry in campaign_data.items():
         # Ensure we have integers for act, stage, and wave numbers
@@ -93,7 +96,7 @@ def create_campaign(campaign_data, enemy_types):
                 'level': int(entry.get(f'enemy_{i}_lvl', '0')),
                 'tier': int(entry.get(f'enemy_{i}_tier', '0')),
                 'position': int(entry.get(f'enemy_{i}_pos', '0'))
-            }, enemy_types)
+            })
             for i in range(1, 6) if entry.get(f'enemy_{i}_type')
         ]
 

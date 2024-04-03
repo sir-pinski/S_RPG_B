@@ -2,7 +2,6 @@ P0
 [Complete]
 
 P1
-- Spreadsheet config input
 - Effects (like fire, poison - type and power)
     - When should effects be applied?
 - Equipment
@@ -34,3 +33,4 @@ Completed Features
 - Multi-wave battles
 - Remove surprise attack on first round
 - Ults
+- Spreadsheet config input

@@ -10,6 +10,7 @@ enemies = gameconfig.get_enemies()
 standard_abilities = gameconfig.get_standard_abilities()
 ult_abilities = gameconfig.get_ult_abilities()
 campaign = gameconfig.get_campaign()
+multipliers = gameconfig.get_multipliers()
 
 # Heroes
 
@@ -20,9 +21,9 @@ campaign = gameconfig.get_campaign()
 
 hero_team = Team(
     [
-        Character(standard_abilities, ult_abilities, heroes.data["hero1"], 1, 1, Row.FRONT, Column.LEFT),
-        Character(standard_abilities, ult_abilities, heroes.data["hero2"], 1, 1, Row.MID, Column.LEFT),
-        Character(standard_abilities, ult_abilities, heroes.data["hero3"], 1, 1, Row.FRONT, Column.RIGHT)
+        Character(standard_abilities, ult_abilities, multipliers, heroes.data["hero1"], 1, 1, Row.FRONT, Column.LEFT),
+        Character(standard_abilities, ult_abilities, multipliers, heroes.data["hero2"], 1, 1, Row.MID, Column.LEFT),
+        Character(standard_abilities, ult_abilities, multipliers, heroes.data["hero3"], 1, 1, Row.FRONT, Column.RIGHT)
         # Character("hero4", 1, 1, Row.BACK, Column.CENTER)
 
     ]
@@ -35,8 +36,8 @@ hero_team = Team(
 
 
 # Assuming 'campaigns' is your input data dictionary
-campaign_object = create_campaign(campaign.data, enemies)
+campaign_object = create_campaign(gameconfig)
 # battle = Battle(campaign_object, heroes, 1, 1)
 print("1")
-Battle(campaign_object, hero_team, enemies, standard_abilities, ult_abilities, 4, 6).simulate_battle()
+Battle(campaign_object, gameconfig, hero_team, 1, 8).simulate_battle()
 # multiple_wave_battle(campaign_object)

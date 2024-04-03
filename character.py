@@ -5,7 +5,7 @@ from ultAbility import UltAbility
 import copy
 
 class Character:
-    def __init__(self, basic_abilities, ult_abilities, char_type, level, tier, row, column):
+    def __init__(self, basic_abilities, ult_abilities, multipliers, char_type, level, tier, row, column):
         self.basic_ability = BasicAbility(basic_abilities.data[char_type['standard_ability']])
         if char_type['ult_ability'] != '':
             self.ult_ability = UltAbility(ult_abilities.data[char_type['ult_ability']])
@@ -15,10 +15,18 @@ class Character:
         self.element = Element[char_type['element']]
         self.level = level
         self.tier = tier
-        self.max_hp = float(char_type['hp'])
-        self.hp = float(char_type['hp'])
-        self.power = float(char_type['power'])
-        self.defense = float(char_type['defense'])
+        level_str = str(level)
+        tier_str = str(tier)
+
+        multiplier = float(multipliers.data.get(level_str).get(tier_str))
+
+        self.base_hp = float(char_type['hp'])
+        self.base_power = float(char_type['power'])
+        self.base_defense = float(char_type['defense'])
+        self.max_hp = self.base_hp * multiplier if multiplier is not None else self.base_hp
+        self.hp = self.max_hp
+        self.power = self.base_power * multiplier if multiplier is not None else self.base_power
+        self.defense = self.base_defense * multiplier if multiplier is not None else self.base_defense
         self.stunned = False
         self.row = row
         self.column = column
@@ -100,5 +108,5 @@ class Character:
         else:
             ult_bar = '[       No Ult       ]'
         # Create the status string including the health bar and numerical health
-        status = f"{self.name.ljust(15)}| HP: {health_bar} {self.hp}/{str(self.max_hp)}\t | Ult: {ult_bar} | Stunned: {self.stunned}"
+        status = f"{self.name.ljust(15)}| HP: {health_bar} {round(self.hp)}/{str(round(self.max_hp))}\t | Ult: {ult_bar} | Stunned: {self.stunned}, Level: {self.level}, Tier: {self.tier}"
         return status

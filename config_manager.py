@@ -1,12 +1,12 @@
 import requests
 import csv
 import io
-from character import Character
 import json
 from ultAbility import UltAbility
 from basicAbility import BasicAbility
 from character_type import CharacterType
 
+multiplier_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTM3NbsBnyH1FU2UEADu1PEMYYmwbHbi--mNRxudgK_cYQ6hJD-UUdPdT8HpaX-GPg0MlkzfaGFqPt-/pub?gid=1238801115&single=true&output=csv"
 hero_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTM3NbsBnyH1FU2UEADu1PEMYYmwbHbi--mNRxudgK_cYQ6hJD-UUdPdT8HpaX-GPg0MlkzfaGFqPt-/pub?gid=2056035388&single=true&output=csv"
 enemy_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTM3NbsBnyH1FU2UEADu1PEMYYmwbHbi--mNRxudgK_cYQ6hJD-UUdPdT8HpaX-GPg0MlkzfaGFqPt-/pub?gid=666264592&single=true&output=csv"
 standard_ability_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTM3NbsBnyH1FU2UEADu1PEMYYmwbHbi--mNRxudgK_cYQ6hJD-UUdPdT8HpaX-GPg0MlkzfaGFqPt-/pub?gid=613308164&single=true&output=csv"
@@ -23,12 +23,16 @@ class GameConfiguration:
         self.standard_abilities = {}
         self.ult_abilities = {}
         self.campaign = {}
+        self.multipliers = {}
 
         load_config(self)
         # load_config(self.ult_abilities, self.standard_abilities, self.enemies, self.heroes, self.campaigns)
 
     def get_heroes(self):
         return self.heroes
+
+    def get_multipliers(self):
+        return self.multipliers
 
     def get_enemies(self):
         return self.enemies
@@ -96,6 +100,27 @@ class BaseConfig:
             return data
 
 
+class MultiplierConfig(BaseConfig):
+    def __init__(self, config_url):
+        super().__init__(config_url, "multipliers")
+
+    def load_csv_from_web(self):
+        response = requests.get(self.config_url)
+        response.raise_for_status()
+        csv_data = csv.reader(io.StringIO(response.text))
+        rows = list(csv_data)
+
+        data_dict = {}
+        # Assuming the unique structure of your multipliers CSV, adjust the parsing accordingly
+        tiers = rows[1][1:]  # Tier labels are in the third row, starting from the second cell
+        # self.data = {}
+        for row in rows[3:]:  # Multiplier data starts from the fifth row
+            level = row[0]
+            data_dict[level] = {tier: (float(multiplier) if multiplier != '-' else float(-1)) for tier, multiplier in zip(tiers, row[1:])}
+
+        return data_dict
+
+
 class UltAbilitiesConfig(BaseConfig):
     def __init__(self, config_url):
         super().__init__(config_url, "id_ult_ability")  # Add any specific methods or properties for ult abilities here
@@ -103,8 +128,7 @@ class UltAbilitiesConfig(BaseConfig):
 
 class StandardAbilitiesConfig(BaseConfig):
     def __init__(self, config_url):
-        super().__init__(config_url,
-                         "id_std_ability")  # Add any specific methods or properties for standard abilities here
+        super().__init__(config_url, "id_std_ability")  # Add any specific methods or properties for standard abilities here
 
 
 class EnemyListConfig(BaseConfig):
@@ -132,6 +156,7 @@ def load_config(self):
     self.enemies = EnemyListConfig(enemy_url)
     self.heroes = HeroListConfig(hero_url)
     self.campaign = CampaignConfig(campaign_url)
+    self.multipliers = MultiplierConfig(multiplier_url)
 
     ult_ability_types = {}
     for ult_ability_id, ult_ability_data in self.ult_abilities.data.items():
